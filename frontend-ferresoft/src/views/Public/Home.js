@@ -1,6 +1,9 @@
-import React from "react";
+//Importamos el estilo de la pagina home
 import '../../assets/css/carousel.css';
+//Importamos el componente navbar para los enlaces de la pagina
 import NavBar from "../../components/NavBar";
+
+//Importamos las imagenes a mostrar en la pagina
 import img1 from "../../assets/img/banner1.jpg";
 import img2 from "../../assets/img/banner2.jpg";
 import img3 from "../../assets/img/banner3.jpg";
@@ -14,6 +17,7 @@ import trab3 from "../../assets/img/trabajo3.jpg";
 
 const Home = () => (
   <>
+    {/* Utilizamos el componente navbar el cual tiene los enlaces de navegación */}
     <NavBar />
     {/* <!-- <nav-bar/> --> */}
     <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
@@ -289,6 +293,7 @@ const Home = () => (
   </>
 );
 
+//Exportamos el componente para ser exportado en index.js de esta carpeta public
 export default Home;
 /*
 Altenativa, usar en los modulos el export siguiente

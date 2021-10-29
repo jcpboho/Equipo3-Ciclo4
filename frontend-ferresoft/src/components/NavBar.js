@@ -1,6 +1,8 @@
-import React from "react";
+//Usamos link para definir etiquetas con las que el usuario pueda navegar entre las páginas
 import { Link } from "react-router-dom";
+//Importamos el logo de la empresa
 import logo from "../assets/img/logo.svg";
+
 const Nav = () => (
     <header>
         <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -44,7 +46,7 @@ const Nav = () => (
     </header>
 
 );
-
+//Exportamos el componente para ser llamado desde cualquier vista
 export default Nav;
 
 /*

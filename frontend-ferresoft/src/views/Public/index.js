@@ -1,4 +1,5 @@
 
+//Importamos todas las vistas para luego exportarlas en una sola
 import Home from './Home';
 import About from './About';
 import Contact from './Contact';
@@ -6,7 +7,7 @@ import Login from './Login';
 import Register from './Register';
 import Product from './Product';
 
-
+//Exportamos todas las vistas en una sola variable, para luego importarla desde routes
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
     About,

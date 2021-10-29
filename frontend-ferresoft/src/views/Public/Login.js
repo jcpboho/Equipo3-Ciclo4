@@ -1,6 +1,9 @@
-import React from "react";
+
+//Importamos el logo de la empresa
 import logo from "../../assets/img/logo.svg";
+//Importamos link para definir la ruta de ir al login
 import { Link } from "react-router-dom";
+//Importamos el estilo para el login
 import "../../assets/css/login.css";
 
 const Login = () => (
@@ -54,6 +57,8 @@ const Login = () => (
     </main>
 );
 
+
+//Exportamos el componente login para ser llamado en el index.js de esta carpeta public
 export default Login;
 /*
 Altenativa, usar en los modulos el export siguiente

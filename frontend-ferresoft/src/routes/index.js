@@ -1,9 +1,15 @@
+/* Se importa route y switch de react-router-dom para definir las rutas y el componente a mostrar */
 import { Route, Switch } from 'react-router-dom';
+/* Se importa las vistas de la carpeta views/public para definir las rutas en las cuales se motraran estas vistas */
 import Publics from '../views/Public';
+
+//Opcion para importar cuando se exporta de manera diferente
 // import {Admin, Users, User, EditUser, DeleteUser, AddUser} from '../views/Admin';
 
 const Routes = () => (
+    /* Usamos switch para definir una unica url de estas y que dos no concuerden y se rendericen */
     <Switch >
+        {/* Usamos router para definir la ruta y el componente a rederizar */}
         <Route exact path="/" component={Publics.Home} />
         <Route path="/product" component={Publics.Product} />
         <Route path="/about" component={Publics.About} />
@@ -20,4 +26,5 @@ const Routes = () => (
     </Switch>
 );
 
+//Exportar el componente para poder utilizarlo en el archivo App.js
 export default Routes;

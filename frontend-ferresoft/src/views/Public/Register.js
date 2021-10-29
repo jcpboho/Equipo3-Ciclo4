@@ -1,4 +1,5 @@
-import React from "react";
+
+//Importamos el componente navbar para mostrar los enlaces de navegación
 import { Link } from "react-router-dom";
 const Register = () => (
     <>
@@ -7,6 +8,7 @@ const Register = () => (
     </>
 );
 
+//Exportamos el componente login para ser llamado en el index.js de esta carpeta public
 export default Register;
 /*
 Altenativa, usar en los modulos el export siguiente
