@@ -4,6 +4,7 @@ import About from './About';
 import Contact from './Contact';
 import Login from './Login';
 import Register from './Register';
+import Product from './Product';
 
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -12,11 +13,12 @@ export default {
     Contact,
     Home,
     Login,
-    Register
-    };
+    Register,
+    Product
+};
 
 
-/* 
+/*
 Altenativa, usar en los modulos el export siguiente
 
 //En la importacion
@@ -34,8 +36,8 @@ module.exports = {
     User: require('./Contact')}; */
 
 
-    
-/* 
+
+/*
 Altenativa
 
 // in index.js

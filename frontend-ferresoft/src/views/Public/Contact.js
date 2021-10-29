@@ -1,12 +1,14 @@
 import React from "react";
+import NavBar from "../../components/NavBar";
 const Contact = () => (
-    <div className="App">
+    <>
+        <NavBar />
         <h1>Contact</h1>
-    </div>    
+    </>
 );
 
-export default  Contact;
-/* 
+export default Contact;
+/*
 Altenativa, usar en los modulos el export siguiente
 export {Home}
 

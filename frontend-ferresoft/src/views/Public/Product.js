@@ -1,13 +1,13 @@
 import React from "react";
 import NavBar from "../../components/NavBar";
-const About = () => (
+const Product = () => (
     <>
         <NavBar />
-        <h1>About</h1>
+        <h1>Product</h1>
     </>
 );
 
-export default About;
+export default Product;
 /*
 Altenativa, usar en los modulos el export siguiente
 export {Home}

@@ -1,14 +1,15 @@
-import {Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Publics from '../views/Public';
 // import {Admin, Users, User, EditUser, DeleteUser, AddUser} from '../views/Admin';
 
 const Routes = () => (
     <Switch >
-        <Route exact path="/" component={Publics.Home}/>
-        <Route path="/about" component={Publics.About}/>
-        <Route path="/contact" component={Publics.Contact}/>
-        <Route path="/login" component={Publics.Login}/>
-        <Route path="/register" component={Publics.Register}/>
+        <Route exact path="/" component={Publics.Home} />
+        <Route path="/product" component={Publics.Product} />
+        <Route path="/about" component={Publics.About} />
+        <Route path="/contact" component={Publics.Contact} />
+        <Route path="/login" component={Publics.Login} />
+        <Route path="/register" component={Publics.Register} />
         {/* <Route path="/profile" component={Profile}/> 
          <Route path="/admin" component={Admin}/>
         <Route path="/admin/users" component={Users}/>
