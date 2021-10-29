@@ -1,6 +1,6 @@
 import React from "react";
 const About = () => (
-    <div>
+    <div className="App">
         <h1>About</h1>
     </div>    
 );

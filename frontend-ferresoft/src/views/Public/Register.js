@@ -1,6 +1,6 @@
 import React from "react";
 const Register = () => (
-    <div>
+    <div className="App">
         <h1>Register</h1>
     </div>    
 );
