@@ -39,9 +39,12 @@ const Login = () => (
                     Recordar
                 </label>
             </div>
-            <button className="w-100 btn btn-lg btn-primary" type="submit">
+
+            <Link className="w-100 btn btn-lg btn-primary" to="/dashboard">
+                Iniciar sesión</Link>
+            {/* <button className="w-100 btn btn-lg btn-primary" type="submit">
                 Iniciar sesión
-            </button>
+            </button> */}
 
             {/* <!-- <router-link className="w-100 btn btn-lg btn-primary" to="/admin"
             >Iniciar sesión</router-link
