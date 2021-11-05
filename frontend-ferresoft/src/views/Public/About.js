@@ -11,14 +11,14 @@ const About = () => (
     <>
         {/* Utilizamos el componente navbar el cual tiene los enlaces de navegación */}
         <NavBar />
-        <div className="container marketing mt-5">
+        <div className="container marketing">
 
 
             {/* <!-- START THE FEATURETTES --> */}
 
 
-            <div className="row featurette">
-                <div className="col-md-7">
+            <div className="row featurette  mt-5">
+                <div className="col-md-7  mt-5">
                     <h2 className="featurette-heading">
                         First featurette heading.
                         <span className="text-muted">It’ll blow your mind.</span>
@@ -28,7 +28,7 @@ const About = () => (
                         Imagine some exciting prose here.
                     </p>
                 </div>
-                <div className="col-md-5">
+                <div className="col-md-5  mt-5">
                     <img
                         className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto"
                         src={trab1}

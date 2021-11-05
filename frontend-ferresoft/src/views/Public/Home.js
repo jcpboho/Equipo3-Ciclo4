@@ -20,7 +20,7 @@ const Home = () => (
     {/* Utilizamos el componente navbar el cual tiene los enlaces de navegación */}
     <NavBar />
     {/* <!-- <nav-bar/> --> */}
-    <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
+    <div id="myCarousel" className="carousel slide  mt-5" data-bs-ride="carousel">
       <div className="carousel-indicators">
         <button
           type="button"

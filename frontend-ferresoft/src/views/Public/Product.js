@@ -5,8 +5,8 @@ const Product = () => (
     <>
         {/* Utilizamos el componente navbar el cual tiene los enlaces de navegación */}
         <NavBar />
-        <div className="container">
-            <div class="album py-5 bg-light">
+        <div className="container  mt-5">
+            <div class="album py-5 bg-light ">
                 <div class="container">
 
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
