@@ -1,11 +1,11 @@
 //Importamos en navbar el cual tiene los enlaces de navegacion
-import NavBar from "../../components/NavBar";
+import NavBar from "components/NavBar";
 
 
 //Importamos las imagenes a mostrar en la pagina
-import trab1 from "../../assets/img/trabajo1.jpg";
-import trab2 from "../../assets/img/trabajo2.jpg";
-import trab3 from "../../assets/img/trabajo3.jpg";
+import trab1 from "assets/img/trabajo1.jpg";
+import trab2 from "assets/img/trabajo2.jpg";
+import trab3 from "assets/img/trabajo3.jpg";
 
 const About = () => (
     <>
