@@ -1,5 +1,5 @@
 //Usamos link para definir etiquetas con las que el usuario pueda navegar entre las páginas
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 //Importamos el logo de la empresa
 import logo from "../assets/img/logo.svg";
 
@@ -7,7 +7,7 @@ const Nav = () => (
     <header>
         <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/"><img className="" src={logo} alt="" width="23" /> FerreSoft</Link>
+                <NavLink activeClassName="active" className="navbar-brand" to="/"><img className="" src={logo} alt="" width="23" /> FerreSoft</NavLink>
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -22,23 +22,23 @@ const Nav = () => (
                 <div className="collapse navbar-collapse" id="navbarCollapse">
                     <ul className="navbar-nav me-auto mb-2 mb-md-0">
                         <li className="nav-item">
-                            <Link to="/" className="nav-link">Inicio</Link>
+                            <NavLink activeClassName="active" exact to="/" className="nav-link">Inicio</NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link to="/product" className="nav-link">Productos</Link>
+                            <NavLink activeClassName="active" to="/product" className="nav-link">Productos</NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link to="/about" className="nav-link">Acerca de</Link>
+                            <NavLink activeClassName="active" to="/about" className="nav-link">Acerca de</NavLink>
                         </li>
                         <li className="nav-item">
-                            <Link to="/contact" className="nav-link">Contacto</Link>
+                            <NavLink activeClassName="active" to="/contact" className="nav-link">Contacto</NavLink>
                         </li>
                     </ul>
                     <form className="d-flex">
-                        <Link to="/login" className="btn btn-outline-success">Iniciar Sesión</Link>
+                        <NavLink activeClassName="active" to="/login" className="btn btn-outline-success">Iniciar Sesión</NavLink>
                     </form>
                     <form className="d-flex">
-                        <Link to="/register" className="btn btn-outline-success">Register</Link>
+                        <NavLink activeClassName="active" to="/register" className="btn btn-outline-success">Register</NavLink>
                     </form>
                 </div>
             </div>

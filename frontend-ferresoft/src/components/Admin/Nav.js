@@ -1,6 +1,6 @@
 
 import * as Icon from 'react-feather';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Nav = () => (
 
@@ -8,73 +8,73 @@ const Nav = () => (
         <div className="position-sticky pt-3">
             <ul className="nav flex-column">
                 <li className="nav-item">
-                    <Link to="/dashboard" className="nav-link active" aria-current="page">
+                    <NavLink activeClassName="active" to="/dashboard" className="nav-link" aria-current="page">
                         <Icon.Home witdh="24" heigth="24" className="mr-2 feather" />
                         Dashboard
-                    </Link>
+                    </NavLink>
                 </li>
                 <li className="nav-item">
-                    <Link to="/dashboard" className="nav-link">
+                    <NavLink activeClassName="active" to="/orders" className="nav-link">
                         <Icon.File witdh="24" heigth="24" className="mr-2 feather" />
                         Orders
-                    </Link>
+                    </NavLink>
                 </li>
                 <li className="nav-item">
-                    <Link to="/products" className="nav-link">
+                    <NavLink activeClassName="active" to="/products" className="nav-link">
                         <Icon.ShoppingCart witdh="24" heigth="24" className="mr-2 feather" />
                         Products
-                    </Link>
+                    </NavLink>
                 </li>
                 <li className="nav-item">
-                    <Link to="/dashboard" className="nav-link">
+                    <NavLink activeClassName="active" to="/customers" className="nav-link">
                         <Icon.Users witdh="24" heigth="24" className="mr-2 feather" />
                         Customers
-                    </Link>
+                    </NavLink>
                 </li >
                 <li className="nav-item">
-                    <Link to="/dashboard" className="nav-link">
+                    <NavLink activeClassName="active" to="/reports" className="nav-link">
                         <Icon.BarChart2 witdh="24" heigth="24" className="mr-2 feather" />
                         Reports
-                    </Link>
+                    </NavLink>
                 </li >
                 <li className="nav-item">
-                    <Link to="/dashboard" className="nav-link">
+                    <NavLink activeClassName="active" to="/integrations" className="nav-link">
                         <Icon.Layers witdh="24" heigth="24" className="mr-2 feather" />
                         Integrations
-                    </Link>
+                    </NavLink>
                 </li >
             </ul >
 
             <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>Saved reports</span>
-                <Link to="/dashboard" className="link-secondary" aria-label="Add a new report">
+                <NavLink activeClassName="active" to="/savedreports" className="link-secondary" aria-label="Add a new report">
                     <Icon.PlusCircle witdh="24" heigth="24" className="mr-2 feather" />
-                </Link>
+                </NavLink>
             </h6 >
             <ul className="nav flex-column mb-2">
                 <li className="nav-item">
-                    <Link to="/dashboard" className="nav-link">
+                    <NavLink activeClassName="active" to="/currentmonth" className="nav-link">
                         <Icon.FileText witdh="24" heigth="24" className="mr-2 feather" />
                         Current month
-                    </Link>
+                    </NavLink>
                 </li>
                 <li className="nav-item">
-                    <Link to="/dashboard" className="nav-link">
+                    <NavLink activeClassName="active" to="/lastquarter" className="nav-link">
                         <Icon.FileText witdh="24" heigth="24" className="mr-2 feather" />
                         Last quarter
-                    </Link>
+                    </NavLink>
                 </li >
                 <li className="nav-item">
-                    <Link to="/dashboard" className="nav-link">
+                    <NavLink activeClassName="active" to="/socialengagement" className="nav-link">
                         <Icon.FileText witdh="24" heigth="24" className="mr-2 feather" />
                         Social engagement
-                    </Link>
+                    </NavLink>
                 </li >
                 <li className="nav-item">
-                    <Link to="/dashboard" className="nav-link">
+                    <NavLink activeClassName="active" to="/yearendsale" className="nav-link">
                         <Icon.FileText witdh="24" heigth="24" className="mr-2 feather" />
                         Year-end sale
-                    </Link>
+                    </NavLink>
                 </li >
             </ul >
         </div >

@@ -21,6 +21,7 @@ const validRegister = joi.object().keys({
     password: joi.string().regex(/^[a-zA-Z0-9]{3,30}$/).required()
 });
 
+//API para login
 router.post('/login', async (req, res) => {
     const { error } = validLogin.validate(req.body);
     if (error) return res.status(400).send({ error: error.details[0].message });
@@ -47,11 +48,7 @@ router.post('/login', async (req, res) => {
     });
 
 });
-
-router.get('/', async (req, res) => {
-    res.status(200).send('Api rest auth');
-});
-
+//API para registrar
 router.post('/register', async (req, res) => {
 
     const { error } = validRegister.validate(req.body);
@@ -73,6 +70,10 @@ router.post('/register', async (req, res) => {
         if (err) { res.status(400).send(err); }
         res.status(200).send({ error: false, menssage: "Usuario creado", params: { user } });
     });
+});
+//API para get
+router.get('/', async (req, res) => {
+    res.status(200).send('Api rest auth');
 });
 
 module.exports = router;
