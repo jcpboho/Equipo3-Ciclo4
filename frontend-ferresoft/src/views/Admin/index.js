@@ -1,11 +1,12 @@
 
 //Importamos todas las vistas para luego exportarlas en una sola
 import Dashboard from './Dashboard';
+import Products from './Products';
 
 //Exportamos todas las vistas en una sola variable, para luego importarla desde routes
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    Dashboard
+    Dashboard, Products
 };
 
 

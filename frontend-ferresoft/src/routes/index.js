@@ -18,6 +18,7 @@ const Routes = () => (
         <Route path="/login" component={Publics.Login} />
         <Route path="/register" component={Publics.Register} />
         <Route path="/dashboard" component={Admin.Dashboard} />
+        <Route path="/products" component={Admin.Products} />
         {/* <Route path="/profile" component={Profile}/> 
          <Route path="/admin" component={Admin}/>
         <Route path="/admin/users" component={Users}/>

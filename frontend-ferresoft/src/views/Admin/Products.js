@@ -1,8 +1,8 @@
-import "../../assets/css/admin/dashboard.css";
-import * as Icon from 'react-feather';
-import Nav from "components/Admin/Nav";
 import Header from "components/Admin/Header";
-const Dashboard = () => (
+import Nav from "components/Admin/Nav";
+import * as Icon from 'react-feather';
+
+const Products = () => (
     <div className="dashboard">
 
         <Header />
@@ -15,7 +15,7 @@ const Dashboard = () => (
                 <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     <div
                         className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                        <h1 className="h2">Dashboard</h1>
+                        <h1 className="h2">Products</h1>
                         <div className="btn-toolbar mb-2 mb-md-0">
                             <div className="btn-group me-2">
                                 <button type="button" className="btn btn-sm btn-outline-secondary">Share</button>
@@ -40,10 +40,10 @@ const Dashboard = () => (
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>1,015</td>
+                                    <td>1,001</td>
                                     <td>random</td>
-                                    <td>tabular</td>
-                                    <td>information</td>
+                                    <td>data</td>
+                                    <td>placeholder</td>
                                     <td>text</td>
                                 </tr>
                             </tbody>
@@ -55,17 +55,6 @@ const Dashboard = () => (
 
 
     </div>
-);
+)
 
-//Exportamos el componente login para ser llamado en el index.js de esta carpeta public
-export default Dashboard;
-/*
-Altenativa, usar en los modulos el export siguiente
-export {Home}
-
-module.exports = {
-    About: require('./About'),
-    Home: require('./Home'),
-    Login: require('./Login'),
-    Register: require('./Register'),
-    User: require('./Contact')}; */
+export default Products;
