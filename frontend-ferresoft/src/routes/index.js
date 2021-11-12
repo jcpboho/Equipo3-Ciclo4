@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 /* Se importa las vistas de la carpeta views/public para definir las rutas en las cuales se motraran estas vistas */
 import Publics from '../views/Public';
 import Admin from '../views/Admin';
+import PrivateRoute from './PrivateRouter';
 
 //Opcion para importar cuando se exporta de manera diferente
 // import {Admin, Users, User, EditUser, DeleteUser, AddUser} from '../views/Admin';
@@ -17,7 +18,7 @@ const Routes = () => (
         <Route path="/contact" component={Publics.Contact} />
         <Route path="/login" component={Publics.Login} />
         <Route path="/register" component={Publics.Register} />
-        <Route path="/dashboard" component={Admin.Dashboard} />
+        <PrivateRoute path="/dashboard" component={Admin.Dashboard} />
         <Route path="/products" component={Admin.Products} />
         {/* <Route path="/profile" component={Profile}/> 
          <Route path="/admin" component={Admin}/>

@@ -26,10 +26,10 @@ router.post('/login', async (req, res) => {
     const { error } = validLogin.validate(req.body);
     if (error) return res.status(400).send({ error: error.details[0].message });
 
-    const validUser = await User.findOne({ email: req.email });
+    const validUser = await User.findOne({ email: req.body.email });
     if (!validUser) { res.status(400).send('Usuario no encontrado'); };
 
-    const validPass = await bcrypt.compare(req.password, user.password);
+    const validPass = await bcrypt.compare(req.body.password, validUser.password);
     if (!validPass) { res.status(400).send('Contraseña incorrecta'); };
 
 
@@ -44,7 +44,7 @@ router.post('/login', async (req, res) => {
     res.status(200).send({
         error: false,
         menssage: 'Login correcto',
-        params: { token: token }
+        params: { signin: true, token: token }
     });
 
 });
@@ -75,5 +75,17 @@ router.post('/register', async (req, res) => {
 router.get('/', async (req, res) => {
     res.status(200).send('Api rest auth');
 });
+//Api para verificar el token
+router.get('/verify', async (req, res) => {
+    const token = req.headers['authorization'];
+    console.log(token);
+    if (!token) return res.status(401).send({ error: true, message: 'No token provided' });
+
+    jwt.verify(token, 'secret', (err, decoded) => {
+        if (err) return res.status(401).send({ error: true, message: 'Invalid token' });
+        res.status(200).send({ error: false, message: 'Token valido', params: { signin: true } });
+    });
+});
+
 
 module.exports = router;
