@@ -77,14 +77,24 @@ router.get('/', async (req, res) => {
 });
 //Api para verificar el token
 router.get('/verify', async (req, res) => {
-    const token = req.headers['authorization'];
-    console.log(token);
-    if (!token) return res.status(401).send({ error: true, message: 'No token provided' });
-
-    jwt.verify(token, 'secret', (err, decoded) => {
-        if (err) return res.status(401).send({ error: true, message: 'Invalid token' });
-        res.status(200).send({ error: false, message: 'Token valido', params: { signin: true } });
-    });
+    const bearerHeader = req.headers['authorization'];
+    if (typeof bearerHeader !== 'undefined') {
+        const bearer = bearerHeader.split(' ');
+        const bearerToken = bearer[1];
+        const token = bearerToken;
+        try {
+            const verify = jwt.verify(token, 'secret');
+            res.status(200).send({ error: false, message: 'Token valido', params: { signin: true } });
+        } catch (error) {
+            res.status(403).json({
+                error: true,
+                message: 'Token no valido',
+                params: {}
+            });
+        }
+    } else {
+        res.status(401).send({ error: true, message: 'No token provided' });
+    }
 });
 
 

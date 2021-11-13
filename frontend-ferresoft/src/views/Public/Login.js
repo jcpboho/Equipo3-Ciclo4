@@ -24,7 +24,7 @@ export default function Login() {
                 try {
                     const res = await axios.get("http://localhost:4000/api/auth/verify", {
                         headers: {
-                            Authorization: `${localStorage.getItem("token")}`
+                            Authorization: `Bearer ${localStorage.getItem("token")}`
                         }
                     })
                     if (res.data.params.signin) {
