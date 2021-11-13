@@ -7,7 +7,12 @@ const Product = require('../../models/product');
 
 const joi = require('joi');
 
-router.get('/', (req, res, next) => {
+const verifyToken = require('../../middlewares/verifyToken');
+
+router.get('/', verifyToken, (req, res, next) => {
+
+    const products = Product.find()
+
     res.send('Hola product');
 });
 
