@@ -53,7 +53,7 @@ export default function Login() {
 
     return (
         < main className="form-signin text-center" >
-            {token ? <Redirect to="/dashboard" /> : null}
+            {token ? <Redirect to="/admin/dashboard" /> : null}
 
             <form onSubmit={handleLogin} >
                 <img className="mb-4" src={logo} alt="" width="72" />
@@ -91,7 +91,7 @@ export default function Login() {
                     </label>
                 </div>
 
-                {/* <Link className="w-100 btn btn-lg btn-primary" to="/dashboard">
+                {/* <Link className="w-100 btn btn-lg btn-primary" to="/admin/dashboard">
                     Iniciar sesión</Link> */}
                 <button className="w-100 btn btn-lg btn-primary" type="submit">
                     Iniciar sesión

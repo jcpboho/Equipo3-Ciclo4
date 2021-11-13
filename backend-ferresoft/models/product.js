@@ -10,7 +10,11 @@ productSchema = new Schema({
         type: String,
         required: true
     },
-    price: {
+    priceCompra: {
+        type: Number,
+        required: true
+    },
+    priceVenta: {
         type: Number,
         required: true
     },

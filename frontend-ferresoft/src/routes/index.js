@@ -13,13 +13,13 @@ const Routes = () => (
     <Switch >
         {/* Usamos router para definir la ruta y el componente a rederizar */}
         <Route exact path="/" component={Publics.Home} />
-        <Route path="/product" component={Publics.Product} />
+        <Route path="/products" component={Publics.Product} />
         <Route path="/about" component={Publics.About} />
         <Route path="/contact" component={Publics.Contact} />
         <Route path="/login" component={Publics.Login} />
         <Route path="/register" component={Publics.Register} />
-        <PrivateRoute path="/dashboard" component={Admin.Dashboard} />
-        <Route path="/products" component={Admin.Products} />
+        <PrivateRoute path="/admin/dashboard" component={Admin.Dashboard} />
+        <PrivateRoute path="/admin/products" component={Admin.Products} />
         {/* <Route path="/profile" component={Profile}/> 
          <Route path="/admin" component={Admin}/>
         <Route path="/admin/users" component={Users}/>

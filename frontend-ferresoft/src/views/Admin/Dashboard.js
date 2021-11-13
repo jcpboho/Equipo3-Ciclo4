@@ -2,8 +2,20 @@ import "../../assets/css/admin/dashboard.css";
 import * as Icon from 'react-feather';
 import Nav from "components/Admin/Nav";
 import Header from "components/Admin/Header";
+import Modal from "components/Admin/ModalProduct";
+import { useState } from "react";
 
 const Dashboard = () => {
+    const [product, setProduct] = useState([]);
+
+    const handleGuardar = (e) => {
+        e.preventDefault();
+        console.log("Guardar");
+    }
+    const handleEditar = (e) => {
+        e.preventDefault();
+        console.log("Editar");
+    }
     return (
         <div className="dashboard">
             <Header />
@@ -22,9 +34,10 @@ const Dashboard = () => {
                                     <button type="button" className="btn btn-sm btn-outline-secondary">Share</button>
                                     <button type="button" className="btn btn-sm btn-outline-secondary">Export</button>
                                 </div>
-                                <button type="button" className="btn btn-sm btn-outline-secondary dropdown-toggle">
+                                <button type="button" className="btn btn-sm btn-outline-secondary dropdown-toggle"
+                                    data-bs-toggle="modal" data-bs-target="#modalCreate">
                                     <Icon.Calendar witdh="24" heigth="24" className="mr-2 feather" />
-                                    This week
+                                    Crear Producto
                                 </button>
                             </div>
                         </div>
@@ -33,6 +46,7 @@ const Dashboard = () => {
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
+                                        <th scope="col">Header</th>
                                         <th scope="col">Header</th>
                                         <th scope="col">Header</th>
                                         <th scope="col">Header</th>
@@ -46,6 +60,18 @@ const Dashboard = () => {
                                         <td>tabular</td>
                                         <td>information</td>
                                         <td>text</td>
+                                        <td>
+                                            <button type="button" className="btn btn-sm btn-outline-primary mx-1"
+                                                data-bs-toggle="modal" data-bs-target="#modalEdit">
+                                                <Icon.Calendar witdh="24" heigth="24" className="mr-2 feather" />
+                                                Editar
+                                            </button>
+                                            <button type="button" className="btn btn-sm btn-outline-danger mx-1"
+                                                data-bs-toggle="modal" data-bs-target="#modalDelete">
+                                                <Icon.Calendar witdh="24" heigth="24" className="mr-2 feather" />
+                                                Eliminar
+                                            </button>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -54,6 +80,11 @@ const Dashboard = () => {
                 </div>
             </div>
 
+            {/* <Modal id="modalCreate" title="Crear Producto" handleAction={handleGuardar} btnSave="Guardar" />
+
+            <Modal id="modalEdit" title="Editar Producto" handleAction={handleEditar} btnSave="Editar" />
+
+            <Modal id="modalDelete" title="Eliminar Producto" handleAction={handleEditar} btnSave="Eliminar" /> */}
 
         </div>);
 };
