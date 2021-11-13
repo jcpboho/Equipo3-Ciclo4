@@ -4,41 +4,42 @@ const handleEditCreate = (e) => (
     <>
         <div className="input-group mb-3">
             <span className="input-group-text" id="basic-addon1">Nombre</span>
-            <input value={e.producto.nombre || ''} onChange={({ target }) => { e.setProduct({ "nombre": target.value }) }}
+            {/* Se agrego el valor de state product y tambien se añadio onchange para actualizar un elemento del arreglo state */}
+            <input value={e.producto.nombre || ''} onChange={({ target }) => { e.setProduct({ ...e.producto, nombre: target.value }) }}
                 type="text" className="form-control" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-addon1" />
         </div>
 
         <div className="input-group mb-3">
             <span className="input-group-text" id="basic-addon2">Descripcion</span>
-            <input value={e.producto.descripcion || ''} onChange={({ target }) => { e.setProduct({ "descripcion": target.value }) }}
+            <input value={e.producto.descripcion || ''} onChange={({ target }) => { e.setProduct({ ...e.producto, descripcion: target.value }) }}
                 type="text" className="form-control" placeholder="Descripcion" aria-label="Descripcion" aria-describedby="basic-addon2" />
         </div>
 
         <label htmlFor="basic-url" className="form-label">Info. Producto</label>
         <div className="input-group mb-3">
             <span className="input-group-text" id="basic-addon3">Precio C.</span>
-            <input value={e.producto.precio_compra || ''} onChange={({ target }) => { e.setProduct({ "precio_compra": target.value }) }}
+            <input value={e.producto.precio_compra || ''} onChange={({ target }) => { e.setProduct({ ...e.producto, precio_compra: target.value }) }}
                 type="number" className="form-control" id="basic-url" placeholder="Precio Compra" aria-label="Precio Compra" aria-describedby="basic-addon3" />
         </div>
         <div className="input-group mb-3">
             <span className="input-group-text" id="basic-addon3">Precio V.</span>
-            <input value={e.producto.precio_venta || ''} onChange={({ target }) => { e.setProduct({ "precio_venta": target.value }) }}
+            <input value={e.producto.precio_venta || ''} onChange={({ target }) => { e.setProduct({ ...e.producto, precio_venta: target.value }) }}
                 type="number" className="form-control" id="basic-url" placeholder="Precio Venta" aria-label="Precio Venta" aria-describedby="basic-addon3" />
         </div>
         <div className="input-group mb-3">
             <span className="input-group-text" id="basic-addon3">Categoria</span>
-            <input value={e.producto.categoria || ''} onChange={({ target }) => { e.setProduct({ "categoria": target.value }) }}
+            <input value={e.producto.categoria || ''} onChange={({ target }) => { e.setProduct({ ...e.producto, categoria: target.value }) }}
                 type="text" className="form-control" id="basic-url" placeholder="Categoria" aria-label="Categoria" aria-describedby="basic-addon3" />
         </div>
         <div className="input-group mb-3">
             <span className="input-group-text" id="basic-addon3">Stock</span>
-            <input value={e.producto.stock || ''} onChange={({ target }) => { e.setProduct({ "stock": target.value }) }}
+            <input value={e.producto.stock || ''} onChange={({ target }) => { e.setProduct({ ...e.producto, stock: target.value }) }}
                 type="number" className="form-control" id="basic-url" placeholder="Cantidad" aria-label="Cantidad" aria-describedby="basic-addon3" />
         </div>
     </>);
 
 const handleDelete = (e) => (<>
-    <h5>¿Desea eliminar el producto {e.btnSave}?</h5>
+    <h5>¿Desea eliminar el producto {e.producto.nombre}?</h5>
 </>);
 
 

@@ -4,14 +4,13 @@ import Nav from "components/Admin/Nav";
 import { useState } from "react";
 import * as Icon from 'react-feather';
 
-const initialState = {
-    "nombre": "", "descripcion": "", "precio_compra": "",
-    "precio_venta": "", "categoria": "", "imagen": "", "stock": ""
+const initialStateProduct = {
+    nombre: "", descripcion: "", precio_compra: "",
+    precio_venta: "", categoria: "", imagen: "", stock: ""
 };
 
-
 const Products = () => {
-    const [product, setProduct] = useState(initialState);
+    const [product, setProduct] = useState(initialStateProduct);
 
     const handleGuardar = (e) => {
         e.preventDefault();
@@ -44,7 +43,7 @@ const Products = () => {
                                 </div>
                                 <button type="button" className="btn btn-sm btn-outline-secondary dropdown-toggle"
                                     data-bs-toggle="modal" data-bs-target="#modalCreate"
-                                    onClick={() => setProduct(initialState)} >
+                                    onClick={() => setProduct(initialStateProduct)} >
                                     <Icon.Calendar witdh="24" heigth="24" className="mr-2 feather" />
                                     Crear Producto
                                 </button>
@@ -73,14 +72,18 @@ const Products = () => {
                                             <button type="button" className="btn btn-sm btn-outline-primary mx-1"
                                                 data-bs-toggle="modal" data-bs-target="#modalEdit"
                                                 onClick={() => setProduct({
-                                                    "nombre": "Cocacola", "descripcion": "Gaseosa Azucarada", "precio_compra": "1200",
-                                                    "precio_venta": "1700", "categoria": "Bebidas", "imagen": "none", "stock": "10"
+                                                    nombre: "Cocacola", descripcion: "Gaseosa Azucarada", precio_compra: "1200",
+                                                    precio_venta: "1700", categoria: "Bebidas", imagen: "none", stock: "10"
                                                 })} >
                                                 <Icon.Calendar witdh="24" heigth="24" className="mr-2 feather" />
                                                 Editar
                                             </button>
                                             <button type="button" className="btn btn-sm btn-outline-danger mx-1"
-                                                data-bs-toggle="modal" data-bs-target="#modalDelete">
+                                                data-bs-toggle="modal" data-bs-target="#modalDelete"
+                                                onClick={() => setProduct({
+                                                    nombre: "Cocacola", descripcion: "Gaseosa Azucarada", precio_compra: "1200",
+                                                    precio_venta: "1700", categoria: "Bebidas", imagen: "none", stock: "10"
+                                                })}>
                                                 <Icon.Calendar witdh="24" heigth="24" className="mr-2 feather" />
                                                 Eliminar
                                             </button>
