@@ -21,6 +21,7 @@ const Routes = () => (
         <PrivateRoute path="/admin/dashboard" component={Admin.Dashboard} />
         <PrivateRoute path="/admin/products" component={Admin.Products} />
         <PrivateRoute path="/admin/users" component={Admin.Users} />
+        <PrivateRoute path="/admin/orders" component={Admin.Orders} />
 
         {/* <Route path="/profile" component={Profile}/> 
          <Route path="/admin" component={Admin}/>

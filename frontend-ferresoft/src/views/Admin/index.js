@@ -3,11 +3,12 @@
 import Dashboard from './Dashboard';
 import Products from './Products';
 import Users from './Users';
+import Orders from './Orders';
 
 //Exportamos todas las vistas en una sola variable, para luego importarla desde routes
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-    Dashboard, Products, Users
+    Dashboard, Products, Users, Orders
 };
 
 

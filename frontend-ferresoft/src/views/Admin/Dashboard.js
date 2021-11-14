@@ -84,10 +84,10 @@ const Dashboard = () => {
                         </div>
                         <div className="row">
 
-                            <CardDash title="Productos" textClass="text-primary" icon="FileText" body={countProducts} />
-                            <CardDash title="Total Inventario" textClass="text-warning" icon="CreditCard" body={" $" + countTotal} />
-                            <CardDash title="Usuarios" textClass="text-success" icon="User" body={countUsers} />
-                            <CardDash title="Pedidos" textClass="text-info" icon="ShoppingCart" body={countOrders} />
+                            <CardDash title="Productos" textClass="text-primary" icon="FileText" body={countProducts} to="/admin/products" />
+                            <CardDash title="Usuarios" textClass="text-success" icon="User" body={countUsers} to="/admin/users" />
+                            <CardDash title="Pedidos" textClass="text-info" icon="ShoppingCart" body={countOrders} to="/admin/orders" />
+                            <CardDash title="Total Inventario" textClass="text-warning" icon="CreditCard" body={" $" + countTotal} to="/admin/products" />
 
                         </div>
                     </main>
@@ -100,7 +100,8 @@ const Dashboard = () => {
 
             <Modal id="modalDelete" title="Eliminar Producto" handleAction={handleEditar} btnSave="Eliminar" /> */}
 
-        </div>);
+        </div>
+    );
 };
 
 //Exportamos el componente login para ser llamado en el index.js de esta carpeta public

@@ -14,7 +14,7 @@ const Nav = () => (
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink activeClassName="active" to="/orders" className="nav-link">
+                    <NavLink activeClassName="active" to="/admin/orders" className="nav-link">
                         <Icon.File witdh="24" heigth="24" className="mr-2 feather" />
                         Pedidos
                     </NavLink>

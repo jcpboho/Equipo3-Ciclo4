@@ -1,4 +1,5 @@
 import * as Icon from 'react-feather';
+import { Link } from 'react-router-dom';
 
 const CardDash = (props) => {
     const IconProps = Icon[props.icon];
@@ -11,7 +12,7 @@ const CardDash = (props) => {
                         <div className="row no-gutters align-items-center">
                             <div className="col mr-2">
                                 <div className={props.textClass + " text-xs font-weight-bold text-uppercase mb-1"} >
-                                    {props.title}
+                                    <Link to={props.to} className={props.textClass + " nav-link p-0"}>{props.title}</Link>
                                 </div>
                                 <div className="h5 mb-0 font-weight-bold text-gray-800">
                                     <IconProps className="mr-2 " />
