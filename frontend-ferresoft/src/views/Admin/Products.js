@@ -1,25 +1,77 @@
 import Header from "components/Admin/Header";
 import Modal from "components/Admin/ModalProduct";
 import Nav from "components/Admin/Nav";
+import { useEffect } from "react";
 import { useState } from "react";
 import * as Icon from 'react-feather';
+import axios from "axios";
 
 const initialStateProduct = {
-    nombre: "", descripcion: "", precio_compra: "",
-    precio_venta: "", categoria: "", imagen: "", stock: ""
+    _id: "", name: "", description: "", priceBuy: "",
+    priceSale: "", category: "", image: "", stock: "",
+    created_at: "", updated_at: ""
 };
 
 const Products = () => {
     const [product, setProduct] = useState(initialStateProduct);
+    const [products, setProducts] = useState([]);
 
-    const handleGuardar = (e) => {
+    const handleGuardar = async (e) => {
         e.preventDefault();
-        console.log("Guardar");
+
+        const response = await axios.post("http://localhost:4000/api/product/save", product, {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            }
+        });
+        if (response.status === 200) {
+            console.log("Guardado");
+            setProduct(initialStateProduct);
+            getProducts();
+        }
     }
-    const handleEditar = (e) => {
+    const handleEditar = async (e) => {
         e.preventDefault();
-        console.log("Editar");
+        const response = await axios.put("http://localhost:4000/api/product/update", product, {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            }
+        });
+        if (response.status === 200) {
+            console.log("Editado");
+            setProduct(initialStateProduct);
+            getProducts();
+        }
     }
+    const handleEliminar = async (e) => {
+        e.preventDefault();
+        const response = await axios.delete("http://localhost:4000/api/product/delete/" + product._id, {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            }
+        });
+        if (response.status === 200) {
+            console.log("Eliminado");
+            setProduct(initialStateProduct);
+            getProducts();
+        }
+    }
+
+    const getProducts = async () => {
+        const products = await axios.get("http://localhost:4000/api/product/", {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token")
+            }
+        })
+        if (products.data.length > 0) {
+            setProducts(products.data);
+        }
+    }
+
+    useEffect(() => {
+        console.log("Productos");
+        getProducts();
+    }, []);
 
     return (
         <div className="dashboard">
@@ -54,15 +106,45 @@ const Products = () => {
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Header</th>
-                                        <th scope="col">Header</th>
-                                        <th scope="col">Header</th>
-                                        <th scope="col">Header</th>
-                                        <th scope="col">Header</th>
+                                        <th scope="col">Producto</th>
+                                        <th scope="col">Descr.</th>
+                                        <th scope="col">Compra</th>
+                                        <th scope="col">Venta</th>
+                                        <th scope="col">Categoria</th>
+                                        <th scope="col">Imagen</th>
+                                        <th scope="col">Cantidad</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+                                    {products.map((item, index) => {
+                                        return (
+                                            <tr key={index}>
+                                                <td>{item._id}</td>
+                                                <td>{item.name}</td>
+                                                <td>{item.description}</td>
+                                                <td>{item.priceBuy}</td>
+                                                <td>{item.priceSale}</td>
+                                                <td>{item.category}</td>
+                                                <td>{item.image}</td>
+                                                <td>{item.stock}</td>
+                                                <td>
+                                                    <button type="button" className="btn btn-sm btn-outline-primary mx-1"
+                                                        data-bs-toggle="modal" data-bs-target="#modalEdit"
+                                                        onClick={() => setProduct(item)} >
+                                                        <Icon.Edit witdh="24" heigth="24" className="mr-2 feather" />
+                                                        Editar
+                                                    </button>
+                                                    <button type="button" className="btn btn-sm btn-outline-danger mx-1"
+                                                        data-bs-toggle="modal" data-bs-target="#modalDelete"
+                                                        onClick={() => setProduct(item)} >
+                                                        <Icon.Trash witdh="24" heigth="24" className="mr-2 feather" />
+                                                        Eliminar
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        );
+                                    })}
+                                    {/* <tr>
                                         <td>1,001</td>
                                         <td>random</td>
                                         <td>data</td>
@@ -88,7 +170,7 @@ const Products = () => {
                                                 Eliminar
                                             </button>
                                         </td>
-                                    </tr>
+                                    </tr> */}
                                 </tbody>
                             </table>
                         </div>
@@ -98,15 +180,15 @@ const Products = () => {
 
             <Modal id="modalCreate" title="Crear Producto"
                 handleAction={handleGuardar} btnSave="Guardar"
-                producto={product} setProduct={setProduct} />
+                product={product} setProduct={setProduct} />
 
             <Modal id="modalEdit" title="Editar Producto"
                 handleAction={handleEditar} btnSave="Editar"
-                producto={product} setProduct={setProduct} />
+                product={product} setProduct={setProduct} />
 
             <Modal id="modalDelete" title="Eliminar Producto"
-                handleAction={handleEditar} btnSave="Eliminar"
-                producto={product} setProduct={setProduct} />
+                handleAction={handleEliminar} btnSave="Eliminar"
+                product={product} setProduct={setProduct} />
 
         </div>
     )
