@@ -18,12 +18,7 @@ const Products = () => {
 
     const handleGuardar = async (e) => {
         e.preventDefault();
-
-        const response = await axios.post("http://localhost:4000/api/product/save", product, {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
-            }
-        });
+        const response = await axios.post("/product/save", product);
         if (response.status === 200) {
             console.log("Guardado");
             setProduct(initialStateProduct);
@@ -32,11 +27,7 @@ const Products = () => {
     }
     const handleEditar = async (e) => {
         e.preventDefault();
-        const response = await axios.put("http://localhost:4000/api/product/update", product, {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
-            }
-        });
+        const response = await axios.put("/product/update", product);
         if (response.status === 200) {
             console.log("Editado");
             setProduct(initialStateProduct);
@@ -45,11 +36,7 @@ const Products = () => {
     }
     const handleEliminar = async (e) => {
         e.preventDefault();
-        const response = await axios.delete("http://localhost:4000/api/product/delete/" + product._id, {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
-            }
-        });
+        const response = await axios.delete("/product/delete/" + product._id);
         if (response.status === 200) {
             console.log("Eliminado");
             setProduct(initialStateProduct);
@@ -58,11 +45,7 @@ const Products = () => {
     }
 
     const getProducts = async () => {
-        const products = await axios.get("http://localhost:4000/api/product/", {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("token")
-            }
-        })
+        const products = await axios.get("/product/")
         if (products.data.length > 0) {
             setProducts(products.data);
         }
@@ -113,6 +96,7 @@ const Products = () => {
                                         <th scope="col">Categoria</th>
                                         <th scope="col">Imagen</th>
                                         <th scope="col">Cantidad</th>
+                                        <th scope="col">Ops</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -144,33 +128,6 @@ const Products = () => {
                                             </tr>
                                         );
                                     })}
-                                    {/* <tr>
-                                        <td>1,001</td>
-                                        <td>random</td>
-                                        <td>data</td>
-                                        <td>placeholder</td>
-                                        <td>text</td>
-                                        <td>
-                                            <button type="button" className="btn btn-sm btn-outline-primary mx-1"
-                                                data-bs-toggle="modal" data-bs-target="#modalEdit"
-                                                onClick={() => setProduct({
-                                                    nombre: "Cocacola", descripcion: "Gaseosa Azucarada", precio_compra: "1200",
-                                                    precio_venta: "1700", categoria: "Bebidas", imagen: "none", stock: "10"
-                                                })} >
-                                                <Icon.Calendar witdh="24" heigth="24" className="mr-2 feather" />
-                                                Editar
-                                            </button>
-                                            <button type="button" className="btn btn-sm btn-outline-danger mx-1"
-                                                data-bs-toggle="modal" data-bs-target="#modalDelete"
-                                                onClick={() => setProduct({
-                                                    nombre: "Cocacola", descripcion: "Gaseosa Azucarada", precio_compra: "1200",
-                                                    precio_venta: "1700", categoria: "Bebidas", imagen: "none", stock: "10"
-                                                })}>
-                                                <Icon.Calendar witdh="24" heigth="24" className="mr-2 feather" />
-                                                Eliminar
-                                            </button>
-                                        </td>
-                                    </tr> */}
                                 </tbody>
                             </table>
                         </div>

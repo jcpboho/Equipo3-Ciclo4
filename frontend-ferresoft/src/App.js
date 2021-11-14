@@ -6,6 +6,10 @@ import Routes from './routes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 //import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import axios from 'axios';
+axios.defaults.baseURL = "http://localhost:4000/api"
+axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem('token');
+
 
 function App() {
   return (
