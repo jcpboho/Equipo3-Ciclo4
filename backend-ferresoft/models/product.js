@@ -22,19 +22,20 @@ productSchema = new Schema({
         type: String,
         required: true
     },
+    //imagen de producto defecto
     image: {
         type: String,
-        default: ''
+        default: 'https://thumbs.dreamstime.com/b/icono-transparente-del-producto-dise%C3%B1o-s%C3%ADmbolo-comercio-electr%C3%B3nico-c-130319042.jpg'
     },
     stock: {
         type: Number,
         required: true
     },
-    created_at: {
+    createdAt: {
         type: Date,
         default: Date.now
     },
-    updated_at: {
+    updatedAt: {
         type: Date,
         default: Date.now
     }

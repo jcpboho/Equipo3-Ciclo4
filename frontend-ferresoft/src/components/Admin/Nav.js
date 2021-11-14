@@ -16,19 +16,19 @@ const Nav = () => (
                 <li className="nav-item">
                     <NavLink activeClassName="active" to="/orders" className="nav-link">
                         <Icon.File witdh="24" heigth="24" className="mr-2 feather" />
-                        Orders
+                        Pedidos
                     </NavLink>
                 </li>
                 <li className="nav-item">
                     <NavLink activeClassName="active" to="/admin/products" className="nav-link">
                         <Icon.ShoppingCart witdh="24" heigth="24" className="mr-2 feather" />
-                        Products
+                        Productos
                     </NavLink>
                 </li>
                 <li className="nav-item">
-                    <NavLink activeClassName="active" to="/admin/customers" className="nav-link">
+                    <NavLink activeClassName="active" to="/admin/users" className="nav-link">
                         <Icon.Users witdh="24" heigth="24" className="mr-2 feather" />
-                        Customers
+                        Usuarios
                     </NavLink>
                 </li >
                 <li className="nav-item">

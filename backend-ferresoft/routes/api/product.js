@@ -16,8 +16,8 @@ const validateProduct = joi.object().keys({
     category: joi.string().required(),
     image: joi.string().required().allow(''),
     stock: joi.number().required(),
-    created_at: joi.date().allow(''),
-    updated_at: joi.date().allow(''),
+    createdAt: joi.date().allow(''),
+    updatedAt: joi.date().allow(''),
     __v: joi.number().allow('')
 });
 
@@ -99,6 +99,39 @@ router.delete('/delete/:id', verifyToken, async (req, res, next) => {
     }
 });
 
+router.get('/count', verifyToken, async (req, res, next) => {
+    try {
+        const count = await Product.countDocuments();
+        res.status(200).json({ error: false, message: 'Total de productos', params: { count } });
+    } catch (error) {
+        res.json({ error: true, message: error, params: {} });
+    }
+});
+
+router.get('/total', verifyToken, async (req, res, next) => {
+    try {
+
+        // product x stock
+        const products = await Product.find();
+        let total = 0;
+        products.forEach(product => {
+            total += product.priceBuy * product.stock;
+        });
+
+        //suma de precio compra de productos
+        /* const total = await Product.aggregate([
+            {
+                $group: {
+                    _id: null,
+                    total: { $sum: "$priceSale" }
+                }
+            }
+        ]); */
+        res.status(200).json({ error: false, message: 'Total de productos', params: { total } });
+    } catch (error) {
+        res.json({ error: true, message: error, params: {} });
+    }
+});
 
 
 module.exports = router;

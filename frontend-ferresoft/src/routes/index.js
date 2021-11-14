@@ -20,6 +20,8 @@ const Routes = () => (
         <Route path="/register" component={Publics.Register} />
         <PrivateRoute path="/admin/dashboard" component={Admin.Dashboard} />
         <PrivateRoute path="/admin/products" component={Admin.Products} />
+        <PrivateRoute path="/admin/users" component={Admin.Users} />
+
         {/* <Route path="/profile" component={Profile}/> 
          <Route path="/admin" component={Admin}/>
         <Route path="/admin/users" component={Users}/>

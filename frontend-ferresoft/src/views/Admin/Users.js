@@ -1,60 +1,58 @@
 import Header from "components/Admin/Header";
-import Modal from "components/Admin/ModalProduct";
+import Modal from "components/Admin/ModalUser";
 import Nav from "components/Admin/Nav";
 import { useEffect, useState } from "react";
 import * as Icon from 'react-feather';
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:4000/api"
-axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem('token');
 
-const initialStateProduct = {
-    _id: "", name: "", description: "", priceBuy: "",
-    priceSale: "", category: "", image: "", stock: "",
-    createdAt: "", updatedAt: ""
+const initialStateUser = {
+    _id: "", name: "", email: "", password: "",
+    role: "", image: "", status: "", createdBy: "",
+    updatedBy: "", createdAt: "", updatedAt: ""
 };
 
-const Products = () => {
-    const [product, setProduct] = useState(initialStateProduct);
-    const [products, setProducts] = useState([]);
+const Users = () => {
+    const [User, setUser] = useState(initialStateUser);
+    const [Users, setUsers] = useState([]);
 
     const handleGuardar = async (e) => {
         e.preventDefault();
-        const response = await axios.post("/product/save/", product);
+        const response = await axios.post("/user/save", User);
         if (response.status === 200) {
             console.log("Guardado");
-            setProduct(initialStateProduct);
-            getProducts();
+            setUser(initialStateUser);
+            getUsers();
         }
     }
     const handleEditar = async (e) => {
         e.preventDefault();
-        const response = await axios.put("/product/update/", product);
+        const response = await axios.put("/user/update", User);
         if (response.status === 200) {
             console.log("Editado");
-            setProduct(initialStateProduct);
-            getProducts();
+            setUser(initialStateUser);
+            getUsers();
         }
     }
     const handleEliminar = async (e) => {
         e.preventDefault();
-        const response = await axios.delete("/product/delete/" + product._id);
+        const response = await axios.delete("/user/delete/" + User._id);
         if (response.status === 200) {
             console.log("Eliminado");
-            setProduct(initialStateProduct);
-            getProducts();
+            setUser(initialStateUser);
+            getUsers();
         }
     }
 
-    const getProducts = async () => {
-        const products = await axios.get("/product/")
-        if (products.data.length > 0) {
-            setProducts(products.data);
+    const getUsers = async () => {
+        const Users = await axios.get("/user/")
+        if (Users.data.length > 0) {
+            setUsers(Users.data);
         }
     }
 
     useEffect(() => {
-        console.log("Productos");
-        getProducts();
+        console.log("Usuarios");
+        getUsers();
     }, []);
 
     return (
@@ -71,7 +69,7 @@ const Products = () => {
                         <div
                             className="d-flex justify-content-between flex-wrap 
                             flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                            <h1 className="h2">Productos</h1>
+                            <h1 className="h2">Usuarios</h1>
                             <div className="btn-toolbar mb-2 mb-md-0">
                                 <div className="btn-group me-2">
                                     <button type="button" className="btn btn-sm btn-outline-secondary">Share</button>
@@ -79,9 +77,9 @@ const Products = () => {
                                 </div>
                                 <button type="button" className="btn btn-sm btn-outline-secondary dropdown-toggle"
                                     data-bs-toggle="modal" data-bs-target="#modalCreate"
-                                    onClick={() => setProduct(initialStateProduct)} >
+                                    onClick={() => setUser(initialStateUser)} >
                                     <Icon.Calendar witdh="24" heigth="24" className="mr-2 feather" />
-                                    Crear Producto
+                                    Crear Usuario
                                 </button>
                             </div>
                         </div>
@@ -90,38 +88,36 @@ const Products = () => {
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Producto</th>
-                                        <th scope="col">Descr.</th>
-                                        <th scope="col">Compra</th>
-                                        <th scope="col">Venta</th>
-                                        <th scope="col">Categoria</th>
-                                        <th scope="col">Imagen</th>
-                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Usuario</th>
+                                        <th scope="col">Correo</th>
+                                        <th scope="col">Rol</th>
+                                        <th scope="col">Estado</th>
+                                        <th scope="col">Creado Por</th>
+                                        <th scope="col">Creado El</th>
                                         <th scope="col">Ops</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {products.map((item, index) => {
+                                    {Users.map((item, index) => {
                                         return (
                                             <tr key={index}>
                                                 <td>{item._id}</td>
                                                 <td>{item.name}</td>
-                                                <td>{item.description}</td>
-                                                <td>{item.priceBuy}</td>
-                                                <td>{item.priceSale}</td>
-                                                <td>{item.category}</td>
-                                                <td>{item.image}</td>
-                                                <td>{item.stock}</td>
+                                                <td>{item.email}</td>
+                                                <td>{item.role}</td>
+                                                <td>{item.status}</td>
+                                                <td>{item.createdBy}</td>
+                                                <td>{item.createdAt}</td>
                                                 <td>
                                                     <button type="button" className="btn btn-sm btn-outline-primary mx-1"
                                                         data-bs-toggle="modal" data-bs-target="#modalEdit"
-                                                        onClick={() => setProduct(item)} >
+                                                        onClick={() => setUser(item)} >
                                                         <Icon.Edit witdh="24" heigth="24" className="mr-2 feather" />
                                                         Editar
                                                     </button>
                                                     <button type="button" className="btn btn-sm btn-outline-danger mx-1"
                                                         data-bs-toggle="modal" data-bs-target="#modalDelete"
-                                                        onClick={() => setProduct(item)} >
+                                                        onClick={() => setUser(item)} >
                                                         <Icon.Trash witdh="24" heigth="24" className="mr-2 feather" />
                                                         Eliminar
                                                     </button>
@@ -136,20 +132,20 @@ const Products = () => {
                 </div>
             </div>
 
-            <Modal id="modalCreate" title="Crear Producto"
+            <Modal id="modalCreate" title="Crear Usuario"
                 handleAction={handleGuardar} btnSave="Guardar"
-                product={product} setProduct={setProduct} />
+                user={User} setUser={setUser} />
 
-            <Modal id="modalEdit" title="Editar Producto"
+            <Modal id="modalEdit" title="Editar Usuario"
                 handleAction={handleEditar} btnSave="Editar"
-                product={product} setProduct={setProduct} />
+                user={User} setUser={setUser} />
 
-            <Modal id="modalDelete" title="Eliminar Producto"
+            <Modal id="modalDelete" title="Eliminar Usuario"
                 handleAction={handleEliminar} btnSave="Eliminar"
-                product={product} setProduct={setProduct} />
+                user={User} setUser={setUser} />
 
         </div>
     )
 }
 
-export default Products;
+export default Users;

@@ -2,20 +2,61 @@ import "../../assets/css/admin/dashboard.css";
 import * as Icon from 'react-feather';
 import Nav from "components/Admin/Nav";
 import Header from "components/Admin/Header";
-import Modal from "components/Admin/ModalProduct";
-import { useState } from "react";
+import CardDash from "components/Admin/CardDash";
+import axios from "axios";
+/* import Modal from "components/Admin/ModalProduct"; */
+import { useEffect, useState } from "react";
 
 const Dashboard = () => {
-    const [product, setProduct] = useState([]);
+    /* const [product, setProduct] = useState([]); */
+    const [countProducts, setCountProducts] = useState(0);
+    const [countUsers, setCountUsers] = useState(0);
+    const [countTotal, setCountTotal] = useState(0);
+    const [countOrders, setCountOrders] = useState(0);
 
-    const handleGuardar = (e) => {
+    /* const handleGuardar = (e) => {
         e.preventDefault();
         console.log("Guardar");
     }
     const handleEditar = (e) => {
         e.preventDefault();
         console.log("Editar");
+    } */
+
+    const getCountProducts = async () => {
+        const response = await axios.get("http://localhost:4000/api/product/count");
+        if (response.status === 200) {
+            setCountProducts(response.data.params.count);
+        }
     }
+    const getCountUsers = async () => {
+        const response = await axios.get("http://localhost:4000/api/user/count");
+        if (response.status === 200) {
+            setCountUsers(response.data.params.count);
+        }
+    }
+    const getCountTotal = async () => {
+        const response = await axios.get("http://localhost:4000/api/product/total");
+        if (response.status === 200) {
+            setCountTotal(response.data.params.total);
+        }
+    }
+    const getCountOrders = async () => {
+        const response = await axios.get("http://localhost:4000/api/order/today");
+        if (response.status === 200) {
+            setCountOrders(response.data.params.count);
+        }
+    }
+
+
+    useEffect((e) => {
+        getCountProducts();
+        getCountUsers();
+        getCountTotal();
+        getCountOrders();
+        /* getCountUsers();
+        getCountP(); */
+    }, []);
     return (
         <div className="dashboard">
             <Header />
@@ -41,40 +82,13 @@ const Dashboard = () => {
                                 </button>
                             </div>
                         </div>
-                        <div className="table-responsive">
-                            <table className="table table-striped table-sm">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Header</th>
-                                        <th scope="col">Header</th>
-                                        <th scope="col">Header</th>
-                                        <th scope="col">Header</th>
-                                        <th scope="col">Header</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1,015</td>
-                                        <td>random</td>
-                                        <td>tabular</td>
-                                        <td>information</td>
-                                        <td>text</td>
-                                        <td>
-                                            <button type="button" className="btn btn-sm btn-outline-primary mx-1"
-                                                data-bs-toggle="modal" data-bs-target="#modalEdit">
-                                                <Icon.Calendar witdh="24" heigth="24" className="mr-2 feather" />
-                                                Editar
-                                            </button>
-                                            <button type="button" className="btn btn-sm btn-outline-danger mx-1"
-                                                data-bs-toggle="modal" data-bs-target="#modalDelete">
-                                                <Icon.Calendar witdh="24" heigth="24" className="mr-2 feather" />
-                                                Eliminar
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div className="row">
+
+                            <CardDash title="Productos" textClass="text-primary" icon="FileText" body={countProducts} />
+                            <CardDash title="Total Inventario" textClass="text-warning" icon="CreditCard" body={" $" + countTotal} />
+                            <CardDash title="Usuarios" textClass="text-success" icon="User" body={countUsers} />
+                            <CardDash title="Pedidos" textClass="text-info" icon="ShoppingCart" body={countOrders} />
+
                         </div>
                     </main>
                 </div>
