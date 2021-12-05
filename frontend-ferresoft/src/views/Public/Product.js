@@ -33,13 +33,10 @@ const Product = () => {
 
                                 <div className="col" key={item._id}>
                                     <div className="card shadow-sm">
-                                        <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-                                            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                                            <title>{item.name}</title>
-                                            <img srcSet={item.image} alt="Thumbnail" />
-                                        </svg>
 
+                                        <img src={item.image[0]} alt="Imagen" className="" className="bd-placeholder-img card-img-top" width="100%" height="225" />
                                         <div className="card-body">
+                                            <p><strong>{item.name}</strong></p>
                                             <p className="card-text">{item.description}</p>
                                             <div className="d-flex justify-content-between align-items-center">
                                                 <small className="text-muted">Disponible: {item.stock}</small>

@@ -24,6 +24,10 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+//public para acceder a los archivos estaticos
+app.use('/', express.static(__dirname + '/public'));
+
+
 //URI en variables de entorno
 const uriDB = process.env.URI_DB || '';
 //Conectar a la base de datos

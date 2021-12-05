@@ -16,10 +16,12 @@ const initialStateProduct = {
 const Products = () => {
     const [product, setProduct] = useState(initialStateProduct);
     const [products, setProducts] = useState([]);
+    const formData = new FormData();
 
     const handleGuardar = async (e) => {
         e.preventDefault();
-        const response = await axios.post("/product/save/", product);
+        formData.append("data", JSON.stringify(product));
+        const response = await axios.post("/product/save/", formData);
         if (response.status === 200) {
             console.log("Guardado");
             setProduct(initialStateProduct);
@@ -28,7 +30,8 @@ const Products = () => {
     }
     const handleEditar = async (e) => {
         e.preventDefault();
-        const response = await axios.put("/product/update/", product);
+        formData.append("data", JSON.stringify(product));
+        const response = await axios.put("/product/update/", formData);
         if (response.status === 200) {
             console.log("Editado");
             setProduct(initialStateProduct);
@@ -110,7 +113,12 @@ const Products = () => {
                                             <td>{item.priceBuy}</td>
                                             <td>{item.priceSale}</td>
                                             <td>{item.category}</td>
-                                            <td>{item.image}</td>
+                                            <td>
+                                                {item.image.map((item, index) => (
+                                                    <img src={item} alt="Imagen" width="100" />
+                                                ))}
+
+                                            </td>
                                             <td>{item.stock}</td>
                                             <td>
                                                 <button type="button" className="btn btn-sm btn-outline-primary mx-1"
@@ -138,11 +146,11 @@ const Products = () => {
 
             <Modal id="modalCreate" title="Crear Producto"
                 handleAction={handleGuardar} btnSave="Guardar"
-                product={product} setProduct={setProduct} />
+                product={product} setProduct={setProduct} formData={formData} />
 
             <Modal id="modalEdit" title="Editar Producto"
                 handleAction={handleEditar} btnSave="Editar"
-                product={product} setProduct={setProduct} />
+                product={product} setProduct={setProduct} formData={formData} />
 
             <Modal id="modalDelete" title="Eliminar Producto"
                 handleAction={handleEliminar} btnSave="Eliminar"

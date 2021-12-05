@@ -9,7 +9,7 @@ const validateProduct = joi.object().keys({
     priceBuy: joi.number().required(),
     priceSale: joi.number().required(),
     category: joi.string().required(),
-    image: joi.string().required().allow(''),
+    image: joi.array(),
     stock: joi.number().required(),
     createdAt: joi.date().allow(''),
     updatedAt: joi.date().allow(''),
@@ -29,6 +29,12 @@ ctrl.getProducts = async (req, res) => {
 };
 
 ctrl.saveProduct = async (req, res) => {
+    req.body = JSON.parse(req.body.data);
+    console.log(req.body);
+    let images = [];
+    req.files.image.map(item => { images.push(process.env.BASE_URL + "/images/products/" + item.filename) })
+    req.body.image = images;
+
     const { error } = validateProduct.validate(req.body);
     if (error) {
         return res.status(400).send(error.details[0].message);
@@ -53,6 +59,13 @@ ctrl.saveProduct = async (req, res) => {
 };
 
 ctrl.updateProduct = async (req, res) => {
+    req.body = JSON.parse(req.body.data);
+    let images = [];
+    req.files.image.map(item => { images.push(process.env.BASE_URL + "/images/products/" + item.filename) })
+    req.body.image = images;
+
+    console.log(req.body);
+
     const { error } = validateProduct.validate(req.body);
     if (error) {
         return res.status(400).send(error.details[0].message);

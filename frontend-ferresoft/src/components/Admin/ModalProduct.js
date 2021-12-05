@@ -1,16 +1,13 @@
 import { useState } from "react";
 
-const formData = new FormData();
-
-const onFileChange = (e, setImages) => {
+const onFileChange = (e, j, setImages) => {
 
     if (e.target.files && e.target.files[0]) {
         var filesAmount = e.target.files.length;
         for (let i = 0; i < filesAmount; i++) {
-            formData.append('image', e.target.files[i]);
+            j.formData.append('image', e.target.files[i]);
             var reader = new FileReader();
             reader.onload = (e) => {
-                console.log("hola")
                 setImages((old) => ([...old, e.target.result]));
             }
             reader.readAsDataURL(e.target.files[i]);
@@ -57,7 +54,7 @@ const handleEditCreate = (e, images, setImages) => (
         <div className="form-group">
             <label forhtml="">Images</label>
             <input type="file" multiple className="form-control"
-                onChange={(e) => onFileChange(e, setImages)} name="images" placeholder="images" />
+                onChange={(i) => onFileChange(i, e, setImages)} name="images" placeholder="images" />
             {images.map((image, index) => (
                 <img key={index} srcSet={image} height="150" width="200px" alt="" className="m-2" />
             ))}
