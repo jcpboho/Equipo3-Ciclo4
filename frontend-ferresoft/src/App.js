@@ -8,13 +8,15 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 //import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import axios from 'axios';
 axios.defaults.baseURL = "http://localhost:4000/api"
-axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem('token');
 
 
 function App() {
   return (
     <>
       {/* Componente para definir las rutas de la aplicación  */}
+
+      {/* Button red */}
+
       <Routes />
     </>
   );

@@ -101,34 +101,34 @@ const Products = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {products.map((item, index) => {
-                                        return (
-                                            <tr key={index}>
-                                                <td>{item._id}</td>
-                                                <td>{item.name}</td>
-                                                <td>{item.description}</td>
-                                                <td>{item.priceBuy}</td>
-                                                <td>{item.priceSale}</td>
-                                                <td>{item.category}</td>
-                                                <td>{item.image}</td>
-                                                <td>{item.stock}</td>
-                                                <td>
-                                                    <button type="button" className="btn btn-sm btn-outline-primary mx-1"
-                                                        data-bs-toggle="modal" data-bs-target="#modalEdit"
-                                                        onClick={() => setProduct(item)} >
-                                                        <Icon.Edit witdh="24" heigth="24" className="mr-2 feather" />
-                                                        Editar
-                                                    </button>
-                                                    <button type="button" className="btn btn-sm btn-outline-danger mx-1"
-                                                        data-bs-toggle="modal" data-bs-target="#modalDelete"
-                                                        onClick={() => setProduct(item)} >
-                                                        <Icon.Trash witdh="24" heigth="24" className="mr-2 feather" />
-                                                        Eliminar
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        );
-                                    })}
+                                    {products.map((item, index) => (
+
+                                        <tr key={index}>
+                                            <td>{item._id}</td>
+                                            <td>{item.name}</td>
+                                            <td>{item.description}</td>
+                                            <td>{item.priceBuy}</td>
+                                            <td>{item.priceSale}</td>
+                                            <td>{item.category}</td>
+                                            <td>{item.image}</td>
+                                            <td>{item.stock}</td>
+                                            <td>
+                                                <button type="button" className="btn btn-sm btn-outline-primary mx-1"
+                                                    data-bs-toggle="modal" data-bs-target="#modalEdit"
+                                                    onClick={() => setProduct(item)} >
+                                                    <Icon.Edit witdh="24" heigth="24" className="mr-2 feather" />
+                                                    Editar
+                                                </button>
+                                                <button type="button" className="btn btn-sm btn-outline-danger mx-1"
+                                                    data-bs-toggle="modal" data-bs-target="#modalDelete"
+                                                    onClick={() => setProduct(item)} >
+                                                    <Icon.Trash witdh="24" heigth="24" className="mr-2 feather" />
+                                                    Eliminar
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                    ))}
                                 </tbody>
                             </table>
                         </div>

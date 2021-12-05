@@ -1,6 +1,23 @@
+import { useState } from "react";
 
+const formData = new FormData();
 
-const handleEditCreate = (e) => (
+const onFileChange = (e, setImages) => {
+
+    if (e.target.files && e.target.files[0]) {
+        var filesAmount = e.target.files.length;
+        for (let i = 0; i < filesAmount; i++) {
+            formData.append('image', e.target.files[i]);
+            var reader = new FileReader();
+            reader.onload = (e) => {
+                console.log("hola")
+                setImages((old) => ([...old, e.target.result]));
+            }
+            reader.readAsDataURL(e.target.files[i]);
+        }
+    }
+}
+const handleEditCreate = (e, images, setImages) => (
     <>
         <div className="input-group mb-3">
             <span className="input-group-text" id="basic-addon1">Nombre</span>
@@ -36,6 +53,15 @@ const handleEditCreate = (e) => (
             <input value={e.product.stock || ''} onChange={({ target }) => { e.setProduct({ ...e.product, stock: target.value }) }}
                 type="number" className="form-control" id="basic-url" placeholder="Cantidad" aria-label="Cantidad" aria-describedby="basic-addon3" />
         </div>
+
+        <div className="form-group">
+            <label forhtml="">Images</label>
+            <input type="file" multiple className="form-control"
+                onChange={(e) => onFileChange(e, setImages)} name="images" placeholder="images" />
+            {images.map((image, index) => (
+                <img key={index} srcSet={image} height="150" width="200px" alt="" className="m-2" />
+            ))}
+        </div>
     </>);
 
 const handleDelete = (e) => (
@@ -46,6 +72,7 @@ const handleDelete = (e) => (
 
 
 const Modal = (props) => {
+    const [images, setImages] = useState([]);
 
     return (
         <div className="modal fade" id={props.id} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -64,7 +91,7 @@ const Modal = (props) => {
                                     type="hidden" className="form-control" placeholder="Id" aria-label="id" aria-describedby="basic-addon1" />
                             </div>
 
-                            {props.btnSave === 'Eliminar' ? handleDelete(props) : handleEditCreate(props)}
+                            {props.btnSave === 'Eliminar' ? handleDelete(props) : handleEditCreate(props, images, setImages)}
 
                         </div>
                         <div className="modal-footer">

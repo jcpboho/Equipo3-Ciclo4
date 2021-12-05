@@ -8,7 +8,7 @@ const verifyToken = async (req, res, next) => {
         req.token = bearerToken;
 
         try {
-            const verify = jwt.verify(req.token, 'secret');
+            const verify = await jwt.verify(req.token, 'secret');
             console.log(verify);
             return next();
 
@@ -22,7 +22,7 @@ const verifyToken = async (req, res, next) => {
     } else {
         res.status(403).json({
             error: true,
-            message: 'Token no valido',
+            message: 'Error token',
             params: {}
         });
     }

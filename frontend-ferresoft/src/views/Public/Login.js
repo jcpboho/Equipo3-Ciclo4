@@ -48,6 +48,7 @@ export default function Login() {
         if (res.data.params.signin) {
             setToken(res.data.params.token);
             localStorage.setItem("token", res.data.params.token);
+            axios.defaults.headers.common['Authorization'] = "Bearer " + localStorage.getItem('token');
         }
     }
 
