@@ -1,7 +1,7 @@
 //importar router para poder usar las rutas
 const router = require('express').Router();
 //importar el modelo user para poder usar el metodo findOne
-const User = require('../../models/User');
+const User = require('../../models/user');
 //Importar joi para validar los datos
 const joi = require('joi');
 //Importar bcrypt para encriptar la contraseña

@@ -29,13 +29,13 @@ app.use('/', express.static(__dirname + '/public'));
 
 
 //URI en variables de entorno
-const uriDB = process.env.URI_DB || '';
+const uriDB = process.env.URI_DB || 'mongodb+srv://api-rest-mevn:api-rest-mevn@appferre.pkch9.mongodb.net/app-ferre?retryWrites=true&w=majority';
 //Conectar a la base de datos
 const options = { useNewUrlParser: true, useUnifiedTopology: true };
 mongoose.connect(uriDB, options).then(() => {
     console.log('Connected to database');
 }).catch(() => {
-    console.log('Connection failed');
+    console.log('Connection DB failed');
 });
 
 //Configurando rutas
