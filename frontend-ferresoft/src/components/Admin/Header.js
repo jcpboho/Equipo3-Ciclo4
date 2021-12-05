@@ -20,7 +20,7 @@ const Header = () => {
                 <div className="nav-item text-nowrap">
                     <Link className="nav-link px-3" to="/login" onClick={logout}>
                         <Icon.LogOut witdh="24" heigth="24" className="mr-2 feather" />
-                        Sign out
+                        Salir
                     </Link>
                 </div>
             </div>

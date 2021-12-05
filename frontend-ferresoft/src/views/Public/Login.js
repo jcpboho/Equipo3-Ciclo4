@@ -13,8 +13,8 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 
 export default function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("pedro@hotmail.com");
+    const [password, setPassword] = useState("pedro");
     const [token, setToken] = useState(null);
 
     useEffect(() => {

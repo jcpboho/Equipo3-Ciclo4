@@ -37,9 +37,9 @@ const Nav = () => (
                     <form className="d-flex">
                         <NavLink activeClassName="active" to="/login" className="btn btn-outline-success">Iniciar Sesión</NavLink>
                     </form>
-                    <form className="d-flex">
+                    {/* <form className="d-flex">
                         <NavLink activeClassName="active" to="/register" className="btn btn-outline-success">Register</NavLink>
-                    </form>
+                    </form> */}
                 </div>
             </div>
         </nav>
